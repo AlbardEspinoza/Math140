@@ -10,6 +10,10 @@ public class ArrrayW2 {
         System.arraycopy(x, 0, y, 0, x.length);
         System.arraycopy(x, 0, y, 1, 40);
         System.arraycopy(x, 10, x, 0, 10);
+
+        System.out.println(y[40]);
+        System.out.println(x[40]);
+
     }
 
     public static void moveSmallesttoPositionZero(int[] arr) {

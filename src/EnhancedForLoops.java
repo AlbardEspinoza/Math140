@@ -4,7 +4,7 @@ public class EnhancedForLoops {
 
         int[] a = {2, 10, 24};
         int total = 0;/*Remember you have to initialize int variables, otherwise they have
-        value whatsoever. ONLY instance variables that are not initialized have a default
+        no value whatsoever. ONLY instance variables that are not initialized have a default
         value of 0.*/
 
         for (int x : a
