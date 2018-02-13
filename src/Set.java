@@ -43,5 +43,28 @@ public class Set { //TODO; Write name and a brief description of the assignment.
 
         }
     }
+
+    public int size() {
+        return size;
+    }
+
+    public void clear() {
+        this.set = new int[10];
+        this.size = 0;
+    }
+
+    public boolean remove(int value) {
+        boolean x = contains(value);
+        if (x) {
+            int y = 0;
+            while (set[y] != value) {
+                y++;
+            }
+            System.arraycopy(set, y + 1, set, y, size - y - 1);
+            size--;
+        }
+        return x;
+    }
 }
+
 
