@@ -1,14 +1,13 @@
 public class Set { //TODO; Write name and a brief description of the assignment.
 
     private int[] set;
-    int size;//Remember uninitialized instance variables always have the default value of 0.
+    private int size;//Remember uninitialized instance variables always have the default value of 0.
 
 
     public Set(int capacity) {/*Remember the name of the class and the name of the constructor have to be identical.
     because ex: Circle2 x = new Circle2(2,3); the first Circle2 means the object is a Circle2 object,
     the second Circle2 is calling the constructor to allocate new memory for that object in that class.*/
         set = new int[capacity];//In this line you're allocating memory to the set array.
-        size = capacity;
     }
 
     private void increaseCapacity() {
@@ -24,7 +23,7 @@ public class Set { //TODO; Write name and a brief description of the assignment.
     public boolean contains(int value) {
         boolean x = false;
         int y = 0;
-        while (y < set.length) {
+        while (y < size && !x) {
             if (set[y] == value) {
                 x = true;
             }
@@ -36,8 +35,11 @@ public class Set { //TODO; Write name and a brief description of the assignment.
     public void add(int value) {
         boolean x = contains(value);
         if (!x) {//!x is equal to x == false.
-            int[] y = new int[size + 1];
-            System.arraycopy(set, 0, y, 0, set.length);
+            if (size == set.length) {
+                increaseCapacity();
+            }
+            set[size] = value;
+            size += 1;
 
         }
     }
