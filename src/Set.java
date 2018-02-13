@@ -62,7 +62,7 @@ public class Set { //TODO; type name and brief description of the code.
     }
 
     public int size() {
-        return size;
+        return this.size;
     }
 
     public void clear() {
@@ -70,6 +70,22 @@ public class Set { //TODO; type name and brief description of the code.
         this.size = 0;
     }
 
+    /*In this method where removing a certain element of the set array(depends on what
+    value is), if it's even there. First we create a boolean variable x and call the
+    contains method from it, this way the contains method checks if the variable
+    stored in value is even in the set array. If the variable is in the set array it
+    will return true, if not it will return false, at the end the returned boolean value
+    will be stored in the x variable. After that I placed an if statement so that if x
+    turned out to be true it would follow the if statements commands, if x turned out
+    false the whole method would just return false. I placed an a while loop within
+    the if statement so it could check at what index in the set array the variable with
+    the same contents as 'value' was stored. When the while loop ends the variable
+     'y' will have store the index number value is stored in the set array. After that
+     I used System.arraycopy() to shift all the elements from y + 1 to the right one
+     position therefore eliminating y in the set array(you're basically copying over
+     it). System.arraycopy(source, sourceposition, destination, destination position,
+     # of elements you're going to copy). At the end of the if statement we just
+     decreased size by 1 and after the if statement we returned x.*/
     public boolean remove(int value) {
         boolean x = contains(value);
         if (x) {
@@ -77,12 +93,12 @@ public class Set { //TODO; type name and brief description of the code.
             while (value != set[y]) {//TODO; continue here.
                 y++;
             }
-            int[] w = new int[set.length - 1];
-            System.arraycopy(set, y + 1, w, 0, size - y);
-            set = w;
+            System.arraycopy(set, y + 1, set, y - 1, size - y - 1);
+            size--;
         }
         return x;
     }
+
 
 
 }
