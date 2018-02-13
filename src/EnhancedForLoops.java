@@ -20,13 +20,15 @@ public class EnhancedForLoops {
         * for each loop the commands you want it to do. In the example above what i did is
         * that I wanted to know the total sum of the integers in the array "a", I created the
         * variable total beforehand so that it could store the address of the final value.
-        * Thw variable "x" loops through the entire array storing one at a time a value of
+        * The variable "x" loops through the entire array storing one at a time a value of
         * the array, It can only have one value at a time so it gets the first value(IT
         * ALWAYS STARTS FROM THE FIRST VALUE) does the commands that are in the for each
-        * loop, the variable "x" dumps its data "dumps" the reference(address from now on
-        * equals address) and gets the reference from the second and index ans starts the
-        * cycle all over again. This repeats until the for each loop runs through the whole
-        * array.*/
+        * loop, the variable "x" dumps its data or more accurately the reference(reference
+        * from now on equals address) and gets the reference from the second index and
+        * starts the cycle all over again. This repeats until the for each loop runs
+        * through the whole array. REMEMBER: the first enhanced for loop is one variable
+        * smaller than the original variable, ex: int[] x, for(int y: x), otherwise it would
+        * loop through only one thing.*/
 
         int x = 10;/*Remember this x is outside the for each loop that's why you don't get
         a compiler error. The x in the for each loop stays within the for each loop.*/

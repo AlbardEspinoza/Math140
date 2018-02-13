@@ -22,6 +22,5 @@ public class ArrrayW2 {
             if (arr[i] < arr[smallestIndex]) ;
         }
     }
-
 }
 
