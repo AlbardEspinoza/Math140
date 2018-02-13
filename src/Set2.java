@@ -34,6 +34,7 @@ public class Set2 {
             if (set[y] == value) {
                 x = true;
             }
+            y++;
         }
         return x;
     }
