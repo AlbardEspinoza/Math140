@@ -48,7 +48,7 @@ public class Set { //TODO; type name and brief description of the code.
     * false in the x variable depending if the value was in the array or not.
     * If x turned out to be false, and size == set.length then it would call the
     * increaseCapacity method so that way the array set would double in size. If not
-    * the only ehing the program would execute is that it would store the variable
+    * the only thing the program would execute is that it would store the variable
     * value in the set array at the size index, and size would increment by one.*/
     public void add(int value) {
         boolean x = contains(value);
@@ -61,10 +61,14 @@ public class Set { //TODO; type name and brief description of the code.
         }
     }
 
+    /*When this method is called it just returns the int  value stored in the
+    address of size.*/
     public int size() {
         return this.size;
     }
 
+    /*When this method id called it resets the set array and gives ir a capacity
+    * of 10 integers and size gets set the value of 0.*/
     public void clear() {
         this.set = new int[10];
         this.size = 0;
@@ -83,14 +87,14 @@ public class Set { //TODO; type name and brief description of the code.
      'y' will have store the index number value is stored in the set array. After that
      I used System.arraycopy() to shift all the elements from y + 1 to the right one
      position therefore eliminating y in the set array(you're basically copying over
-     it). System.arraycopy(source, sourceposition, destination, destination position,
+     it). System.arraycopy(source, source position, destination, destination position,
      # of elements you're going to copy). At the end of the if statement we just
      decreased size by 1 and after the if statement we returned x.*/
     public boolean remove(int value) {
         boolean x = contains(value);
         if (x) {
             int y = 0;
-            while (value != set[y]) {//TODO; continue here.
+            while (value != set[y]) {
                 y++;
             }
             System.arraycopy(set, y + 1, set, y - 1, size - y - 1);
@@ -99,6 +103,15 @@ public class Set { //TODO; type name and brief description of the code.
         return x;
     }
 
+    public String toString() {
+        //TODO; how?
+        int x = 0;
+        String y = "";
+        while (x < size) {
+            y = "{" + set[x] + ",";
+            x++;
 
-
+        }
+        return y;
+    }
 }
