@@ -105,13 +105,11 @@ public class Set { //TODO; type name and brief description of the code.
 
     public String toString() {
         //TODO; how?
-        int x = 0;
-        String y = "";
-        while (x < size) {
-            y = "{" + set[x] + ",";
-            x++;
-
+        String y = "{";//TODO; y = "{" + set[0]; maybe?
+        for (int x = 0; x < set.length; x++) {
+            y += set[x] + ",";//TODO; you're close just correct this.
         }
+        y += "}";
         return y;
     }
 }
