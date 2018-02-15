@@ -1,4 +1,7 @@
-public class Set { //TODO; type name and brief description of the code.
+public class Set {
+    /*This code was created by Albard Espinoza. This is just another version
+    * of the ArrayList class, it has all the same methods and it performs almost the same
+    * commands.*/
 
     private int[] set;
     private int size;
@@ -97,19 +100,28 @@ public class Set { //TODO; type name and brief description of the code.
             while (value != set[y]) {
                 y++;
             }
-            System.arraycopy(set, y + 1, set, y - 1, size - y - 1);
+            System.arraycopy(set, y + 1, set, y, size - y - 1);//TODO; Finish this.
             size--;
         }
         return x;
     }
 
+    /*To make this method return the whole set enclosed in curly braces and separated by commas
+    * I symply used a for loops and performed string concatenation in its body.*/
     public String toString() {
-        //TODO; how?
-        String y = "{";//TODO; y = "{" + set[0]; maybe?
-        for (int x = 0; x < set.length; x++) {
+        String y = "{";
+        for (int x = 0; x < size - 1; x++) {
             y += set[x] + ",";//TODO; you're close just correct this.
         }
-        y += "}";
+        if (size != 0) {
+            y += set[size - 1] + "}";
+        }
+        else if(size == 0){
+            y = "{}";
+        }
         return y;
+
     }
 }
+
+//TODO; Review the whole code and redo it yourself.

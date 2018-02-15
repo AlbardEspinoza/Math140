@@ -35,7 +35,11 @@ public class While {
         a.add(8);
         a.add(9);
         a.add(10);
+        a.remove(10);
         System.out.println(a.toString());
+        System.out.println("Line Break");
+        Set b = new Set(10);
+        System.out.println(b.toString());
 
     }
 }
