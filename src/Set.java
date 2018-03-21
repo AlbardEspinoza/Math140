@@ -1,7 +1,9 @@
 public class Set {
     /*This code was created by Albard Espinoza. This is just another version
     * of the ArrayList class, it has all the same methods and it performs almost the same
-    * commands.*/
+    * commands.
+    * This code works with arrays with special methods to unite the contents of an array,
+    * remove some of the contents of the array, etc...*/
 
     private int[] set;
     private int size;
@@ -12,7 +14,7 @@ public class Set {
     }
 
     /*In this method you're doubling the capacity of the set array.*/
-    private void increaseCapacity() {
+    private void increaseCapacity() {//TODO; how does it know which variable its increasing its capacity when its called from another method.
         int[] y = new int[set.length * 2];
         System.arraycopy(set, 0, y, 0, set.length);
         set = y;/*In this line you're just pointing y and set to the same
@@ -107,7 +109,7 @@ public class Set {
     }
 
     /*To make this method return the whole set enclosed in curly braces and separated by commas
-    * I symply used a for loops and performed string concatenation in its body.*/
+    * I simply used a for loops and performed string concatenation in its body.*/
     public String toString() {
         String y = "{";
         for (int x = 0; x < size - 1; x++) {
@@ -115,13 +117,79 @@ public class Set {
         }
         if (size != 0) {
             y += set[size - 1] + "}";
-        }
-        else if(size == 0){
+        } else if (size == 0) {
             y = "{}";
         }
         return y;
 
     }
+
+    /*I created a new variable tmp to store all the items we would want to return at the end.
+    * I used a for loop to "search" through the contents of the array, after that I set an if
+    * statement and in the parameters I called the contains method, I added the "!" so
+    * if the method returned false it meant it didn't contain it so the boolean would change to
+    * true and it would run the code in its's body which would basically add the conntent
+    * at set[x].*/
+    public Set complement(Set s) {
+        Set tmp = new Set(10);//TODO; Why are we setting the capacity to 10?
+        for (int x = 0; x < size; x++) {
+            if (!s.contains(set[x])) {//set[x] refers to the items in the array of the variable that called the method.
+                tmp.add(set[x]);
+            }
+        }
+        return tmp;
+    }
+
+    /*I created a new variable tmp to store all the items we would want to return at the end.
+    * I used a for loop to go through the contents of the Set array of the variable that called
+    * the method. I used a second for loop to go through the contents of the s Set array. In
+    * both of the for loops body's I added the contents of Set arrays to tmp. At the end
+    * it just returned the Set array tmp.*/
+    public Set union(Set s) {//problem study this, s address.
+        Set tmp = new Set(10);//TODO; why was p+ an error?
+        for (int x = 0; x < size; x++) {
+            tmp.add(set[x]);
+        }
+        for (int x = 0; x < s.size; x++) {
+            tmp.add(s.set[x]);
+        }
+        return tmp;
+    }
+
+    /*This method is very simple, basically it removes the mutual contents form the arrays
+    * that called the method and s method.*/
+    public boolean removeAll(Set s) {
+        boolean y = false;
+        for (int x = 0; x < size; x++) {
+            if (s.contains(set[x])) {
+                remove(set[x]);
+                y = true;
+                x--;
+            }
+        }
+        return y;
+    }
+
+    /*This method removes the contents of the original Set array(array of the variable
+    * that called the method) that are not contained in the s array. It returns true
+    * if at least one element is removed, if not it returns false.*/
+    public boolean retainAll(Set s) {
+        boolean y = false;
+        int p = 0;
+        int[] tmp = new int[size];
+        for (int x = 0; x < size; x++) {
+            if (s.contains(set[x])) {
+                tmp[p] = set[x];
+                y = true;
+                p++;
+            }
+        }
+        size = p;
+        set = tmp;
+        return y;
+    }
+
 }
 
 //TODO; Review the whole code and redo it yourself.
+//TODO; REVIEW REVIEW REVIEW
