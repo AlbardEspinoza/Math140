@@ -1,103 +1,69 @@
-
+//This code was created by Albard Espinoza.
 public class Test {
 
     public static void main(String[] args) {
+        int[] radius = {4, 5, 2, 11, 100, 50, 31, 31, 19, 2, 11, 300, 221, 2, 50};
+        int[] height = {1, 2, 5, 14, 91, 51, 82, 11, 19, 2, 11, 33, 221, 5, 5};
 
-        // Test complement
-        Set setOne = new Set(10);
-        for (int i = 0; i < 20; i++) {
-            setOne.add(i);
+        /* Step 1
+            Insert a lambda expression where
+            Cylinder1 > Cylinder2 if radius of Cylinder1 > radius Cylinder2
+            Cylinder1 = Cylinder2 if radius of Cylinder1 = radius Cylinder2
+            Cylinder1 < Cylinder2 if radius of Cylinder1 < radius Cylinder2
+        */
+        SortedLinkedList<Cylinder> list
+                = new SortedLinkedList<>((x, y) -> x.getRadius() - y.getRadius());
+        for (int i = 0; i < radius.length; i++) {
+            list.add(new Cylinder(radius[i], height[i]));
         }
-        System.out.println("Set One: " + setOne);
-        Set setTwo = new Set(10);
-        for (int i = 20; i < 40; i++) {
-            setTwo.add(i);
-        }
-        System.out.println("Set Two: " + setTwo);
-        Set setThree = setOne.complement(setTwo);
-        System.out.println("Set Three: " + setThree);
-        setTwo.clear();
-        for (int i = 10; i < 40; i++) {
-            setTwo.add(i);
-        }
-        System.out.println("Set Two: " + setTwo);
-        setThree = setOne.complement(setTwo);
-        System.out.println("Set Three: " + setThree);
 
-        //Test union
-        System.out.println();
-        setThree = setOne.union(setTwo);
-        System.out.println("Set Three: " + setThree);
-        setOne.clear();
-        for (int i = 0; i < 10; i++) {
-            setOne.add(i);
+        System.out.println("\nAscending order by radius");
+        for (Cylinder x : list) {
+            System.out.println(x);
         }
-        setTwo.clear();
-        for (int i = 100; i < 110; i++) {
-            setTwo.add(i);
-        }
-        setThree = setOne.union(setTwo);
-        System.out.println("Set Three: " + setThree);
-        //Test removeAll
-        System.out.println();
-        setOne.add(100);
-        System.out.println("Set One: " + setOne);
-        System.out.println(setOne.removeAll(setTwo));
-        System.out.println("Set One: " + setOne);
-        System.out.println(setOne.removeAll(setTwo));   // repeat
-        System.out.println("Set One: " + setOne);
-        System.out.println(setOne.removeAll(setOne));  // remove all elements
-        System.out.println("Set One: " + setOne);
-        //Test retainAll
-        System.out.println();
-        setOne.clear();
-        setTwo.clear();
-        for (int i = 0; i < 10; i++) {
-            setOne.add(i);
-        }
-        for (int i = 5; i < 15; i++) {
-            setTwo.add(i);
-        }
-        System.out.println(setOne.retainAll(setOne));
-        System.out.println("Set One: " + setOne);
-        System.out.println(setOne.retainAll(setTwo));
-        System.out.println("Set One: " + setOne);
-        setTwo.clear();
-        for (int i = 50; i < 55; i++) {
-            setTwo.add(i);
-        }
-        System.out.println(setOne.retainAll(setTwo));
-        System.out.println("Set One: " + setOne);
-
-        Set m = new Set(10);
-        for (int x = 1; x <= 10; x++) {
-            m.add(x);
-        }
-        Set y = new Set(10);
-        for (int x = 5; x <= 15; x++) {
-            y.add(x);
-        }
-        System.out.println(y.union(m));//TODO; Why does it print the curly braces?
-        //Because remember when you call the name of the variable only it calls the toString.
-
-        Set x = new Set(10);
-        x.add(3);
-        x.add(4);
-        x.add(5);
 
 
-        System.out.print("This ");
-        System.out.print("is ");
-        System.out.print("printing ");
-        System.out.print("consistently ");
-        System.out.print("on ");
-        System.out.print("a ");
-        System.out.print("single ");
-        System.out.print("line.");
-        System.out.println(" Will this create a line break?");//No.
-        System.out.println("This will.");
-        System.out.print("Although you can still attach print statements to it, until you create another line break.");
-        System.out.println(" Another line break wont create a new line, use /n if you want. \nLike this");
+        SortedLinkedList<Cylinder> lessThan = list.lessThan(new Cylinder(100, 4));
+        System.out.println("\nRadius < 100");
+        for (Cylinder x : lessThan) {
+            System.out.println(x);
+        }
 
+
+        SortedLinkedList<Cylinder> greaterThan = list.greaterThan(new Cylinder(25, 4));
+        System.out.println("\nRadius > 25");
+        for (Cylinder x : greaterThan) {
+            System.out.println(x);
+        }
+
+        /* Step 2
+            Insert a lambda expression where
+            Cylinder1 > Cylinder2 if height of Cylinder1 < height Cylinder2
+            Cylinder1 = Cylinder2 if height of Cylinder1 = height Cylinder2
+            Cylinder1 < Cylinder2 if height of Cylinder1 > height Cylinder2
+        */
+
+        list = new SortedLinkedList<>((x, y) -> -(x.getHeight() - y.getHeight()));
+        for (int i = 0; i < radius.length; i++) {
+            list.add(new Cylinder(radius[i], height[i]));
+        }
+
+        System.out.println("\nDescending order by height");
+        for (Cylinder x : list) {
+            System.out.println(x);
+        }
+        lessThan = list.lessThan(new Cylinder(5, 20));
+        System.out.println("\nHeights greater than 20");
+        for (Cylinder x : lessThan) {
+            System.out.println(x);
+        }
+        greaterThan = list.greaterThan(new Cylinder(5, 20));
+        System.out.println("\nHeights less than 20");
+        for (Cylinder x : greaterThan) {
+            System.out.println(x);
+        }
     }
 }
+
+/*The whole point of this is that we've been using compare so that we can compare different types of
+* objects in the way we want by implementing the lambda expression.*/
